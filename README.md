@@ -13,9 +13,9 @@ Install foundry and check with forge --version
 
 ### Quickstart
 ```shell
-$ git clone https://github.com/Cyfrin/foundry-fund-me-cu
-$ cd foundry-fund-me-cu
-$ make
+git clone https://github.com/Cyfrin/foundry-fund-me-cu
+cd foundry-fund-me-cu
+make
 ```
 ### Optional: Gitpod
 
@@ -25,19 +25,19 @@ For an online development environment, use Gitpod.
 
 ## Deploying
 ```shell
-$ forge script script/DeployFundMe.s.sol
+forge script script/DeployFundMe.s.sol
 ```
 ## Testing
 ```shell
-$ forge test
+forge test
 ```
 ## To test with Sepolia fork:
 ```shell
-$ forge test --fork-url $SEPOLIA_RPC_URL
+forge test --fork-url $SEPOLIA_RPC_URL
 ```
 ## Test Coverage
 ```shell
-$ forge coverage
+forge coverage
 ```
 ## Working with zkSync Locally
 
@@ -51,15 +51,15 @@ $ forge coverage
 
 ### Setup Local zkSync Node
 ```shell
-$ npx zksync-cli dev config
+npx zksync-cli dev config
 ```
 ### Select In memory node, then run:
 ```shell
-$ npx zksync-cli dev start
+npx zksync-cli dev start
 ```
 ### Deploy to zkSync Local Node
 ```shell
-$ make deploy-zk
+make deploy-zk
 ```
 ## Deploying to a Testnet or Mainnet
 
@@ -70,24 +70,24 @@ $ make deploy-zk
 3. Deploy the contract:
 
 ```shell
-$ forge script script/DeployFundMe.s.sol --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY
+forge script script/DeployFundMe.s.sol --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY
 ```
 ### Running Scripts
 ```shell
-$ cast send <FUNDME_CONTRACT_ADDRESS> "fund()" --value 0.1ether --private-key <PRIVATE_KEY>
+cast send <FUNDME_CONTRACT_ADDRESS> "fund()" --value 0.1ether --private-key <PRIVATE_KEY>
 ```
 ### Withdraw funds:
 ```shell
-$ cast send <FUNDME_CONTRACT_ADDRESS> "withdraw()" --private-key <PRIVATE_KEY>
+cast send <FUNDME_CONTRACT_ADDRESS> "withdraw()" --private-key <PRIVATE_KEY>
 ```
 ### Estimate Gas Usage
 ```shell
-$ forge snapshot
+forge snapshot
 ```
 ### Formatting Code
 
 ```shell
-$ forge fmt
+forge fmt
 ```
 
 For further details, refer to the official documentation. Happy coding!
