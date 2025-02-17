@@ -5,7 +5,7 @@ It's my very first Solidity project—a stepping stone in what I believe will be
 
 ## Getting Started
 
-### Requirements
+### Requirements 
 
 Install git and verify with git --version
 

@@ -11,7 +11,7 @@ all: clean remove install update build
 # Clean the repo
 clean  :; forge clean
 
-# Remove modules 
+# Remove modules
 remove :; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && git add . && git commit -m "modules"
 
 # Update Dependencies
