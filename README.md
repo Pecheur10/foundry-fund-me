@@ -13,9 +13,9 @@ Install foundry and check with forge --version
 
 ### Quickstart
 ```shell
-git clone https://github.com/Cyfrin/foundry-fund-me-cu
-cd foundry-fund-me-cu
-make
+git clone https://github.com/Pecheur10/foundry-fund-me
+cd foundry-fund-me
+forge build
 ```
 ### Optional: Gitpod
 
