@@ -8,7 +8,7 @@ import {AggregatorV3Interface} from "lib/chainlink-brownie-contracts/contracts/s
  * @notice Based on the FluxAggregator contract
  * @notice Use this contract when you need to test
  * other contract's ability to read data from an
- * aggregator contract, but how the aggregator got
+ * aggregator contract, but how the aggregator got 
  * its answer is unimportant
  */
 contract MockV3Aggregator is AggregatorV3Interface {

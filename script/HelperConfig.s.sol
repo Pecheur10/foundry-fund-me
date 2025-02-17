@@ -9,7 +9,7 @@ import {Script} from "forge-std/Script.sol";
 import {MockV3Aggregator} from "../test/mocks/MockV3Aggregator.sol";
 
 contract HelperConfig is Script {
-    // If we are on our local anvil chain, we will deploy mock contracts.
+    // If we are on our local anvil chain, we will deploy mock contracts..
     // If we are on the mainnet, we will deploy the real contracts.
     // Otherwise, grab the existing address from the live network.
     // This is a simple way to manage contract addresses across different networks.

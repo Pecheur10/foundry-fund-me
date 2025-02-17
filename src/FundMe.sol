@@ -7,7 +7,7 @@ import {AggregatorV3Interface} from "lib/chainlink-brownie-contracts/contracts/s
 import {PriceConverter} from "./PriceConverter.sol";
 
 // 3. Interfaces, Libraries, Contracts
-error FundMe__NotOwner(); //Convention pour les erreurs: error Fichier__NotOwner();
+error FundMe__NotOwner(); //Convention pour les erreurs: error Fichier__NotOwner(); 
 
 /**
  * @title A sample Funding Contract
