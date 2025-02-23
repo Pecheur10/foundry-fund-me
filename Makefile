@@ -4,58 +4,59 @@
 
 build:; forge build
 
-deploy-sepolia:; forge script  script/DeployFundMe.s.sol:DeployFundMe --rpc-url $(SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
+deploy-sepolia:; forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url $(SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
+
+deploy:; forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url $(ANVIL_RPC_URL) --private-key $(DEFAULT_ANVIL_KEY) --broadcast
+
+anvil:; anvil -m 'test test test test test test test test test test test junk' --steps-tracing --block-time 1
 
 all: clean remove install update build
 
 # Clean the repo
-clean  :; forge clean
+clean:; forge clean
 
 # Remove modules
-remove :; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && git add . && git commit -m "modules"
+remove:; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && git add . && git commit -m "modules"
 
 # Update Dependencies
 update:; forge update
 
-build:; forge build
+zkbuild:; forge build --zksync
 
-zkbuild :; forge build --zksync
+test:; forge test
 
-test :; forge test
+zktest:; foundryup-zksync && forge test --zksync && foundryup
 
-zktest :; foundryup-zksync && forge test --zksync && foundryup
+snapshot:; forge snapshot
 
-snapshot :; forge snapshot
+format:; forge fmt
 
-format :; forge fmt
-
-anvil :; anvil -m 'test test test test test test test test test test test junk' --steps-tracing --block-time 1
-
-zk-anvil :; npx zksync-cli dev start
+zk-anvil:; npx zksync-cli dev start
 
 help:
-    @echo "Available targets:"
-    @echo "  all        - clean, remove, install, update, build"
-    @echo "  clean      - clean the repo"
-    @echo "  remove     - remove modules"
-    @echo "  install    - install dependencies"
-    @echo "  update     - update dependencies"
-    @echo "  build      - build the project"
-    @echo "  test       - run tests"
-    @echo "  snapshot   - create a snapshot"
-    @echo "  format     - format the code"
-    @echo "  anvil      - run anvil"
-    @echo "  zk-anvil   - run zksync anvil"
-    @echo "  zkbuild    - build the project with zksync"
-    @echo "  zktest     - run tests with zksync"
-    @echo "  deploy-sepolia - deploy to sepolia"
-    @echo "  fund       - fund the contract"
-    @echo "  withdraw   - withdraw from the contract"
+	@echo "Available targets:"
+	@echo "  all        - clean, remove, install, update, build"
+	@echo "  clean      - clean the repo"
+	@echo "  remove     - remove modules"
+	@echo "  install    - install dependencies"
+	@echo "  update     - update dependencies"
+	@echo "  build      - build the project"
+	@echo "  test       - run tests"
+	@echo "  snapshot   - create a snapshot"
+	@echo "  format     - format the code"
+	@echo "  anvil      - run anvil"
+	@echo "  zk-anvil   - run zksync anvil"
+	@echo "  zkbuild    - build the project with zksync"
+	@echo "  zktest     - run tests with zksync"
+	@echo "  deploy-sepolia - deploy to sepolia"
+	@echo "  fund       - fund the contract"
+	@echo "  withdraw   - withdraw from the contract"
+
 
 SENDER_ADDRESS := <sender's address>
- 
+
 fund:
-	@forge script script/Interactions.s.sol:FundFundMe --sender $(SENDER_ADDRESS) $(NETWORK_ARGS)
+    @forge script script/Interactions.s.sol:FundFundMe --sender $(SENDER_ADDRESS) $(NETWORK_ARGS)
 
 withdraw:
-	@forge script script/Interactions.s.sol:WithdrawFundMe --sender $(SENDER_ADDRESS) $(NETWORK_ARGS)
+    @forge script script/Interactions.s.sol:WithdrawFundMe --sender $(SENDER_ADDRESS) $(NETWORK_ARGS)
